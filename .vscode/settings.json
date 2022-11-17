@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "C:\\Users\\legai\\Documents\\__Perso\\ProductionPerso\\inrap_renamer\\Lib\\site-packages"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
+}
