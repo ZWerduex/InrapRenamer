@@ -34,7 +34,7 @@ class Strings():
 
     class Errors():
 
-        TOO_MANY_FILES = 'Il y a trop de fichier à renommer. Le numéro maximal dépasse la limite de 9999.'
+        NO_FILES_FOUND = "Aucun fichier n'a été trouvé dans le dossier donné."
         AN_ERROR_OCCURED_DURING_RENAMING = 'Une erreur a eu lieu durant le renommage des fichiers.'
 
 # ----- Chemins

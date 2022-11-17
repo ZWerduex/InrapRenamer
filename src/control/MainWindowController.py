@@ -8,7 +8,7 @@ import logging
 LOGGER = logging.getLogger(__name__)
 
 import os
-from math import floor
+import math
 
 import PyQt6.QtCore as core
 
@@ -50,6 +50,7 @@ class MainWindowController():
 
     def _reportError(self, e: Exception) -> None:
         LOGGER.error('%s : %s', type(e).__name__, e)
+        self._window._tracker.hide()
         self._window.showDialog(
             rsc.Strings.Words.ERROR,
             rsc.Strings.Errors.AN_ERROR_OCCURED_DURING_RENAMING,
@@ -88,10 +89,10 @@ class RenamerThread(core.QThread):
             files = [file for file in os.listdir(self._dir) if os.path.isfile(os.path.join(self._dir, file))]
             nbFiles = len(files)
             LOGGER.debug('Found %d files', nbFiles)
-            if nbFiles > 9999:
-                LOGGER.error('Too many files to rename')
-                self.errorRaised.emit(rsc.Strings.Errors.TOO_MANY_FILES)
-                self.exit(0)
+            if nbFiles <= 0:
+                self.errorRaised.emit(FileNotFoundError(rsc.Strings.Errors.NO_FILES_FOUND))
+                return
+            numLength = max(int(math.log10(nbFiles)) + 1, 4)
 
             LOGGER.info('Sorting files by older file first ...')
             # Sort by older file first
@@ -108,13 +109,13 @@ class RenamerThread(core.QThread):
                     self._dir,
                     '{}{}{}{}'.format(
                         self._prefix,
-                        str(i + 1).zfill(4),
+                        str(i + 1).zfill(numLength),
                         self._suffix,
                         extension
                     )
                 )
                 os.rename(old, new)
-                self.progressUpdated.emit(floor(i * 100 / nbFiles))
+                self.progressUpdated.emit(math.floor(i * 100 / nbFiles))
 
             LOGGER.info('Renaming completed')
             self.statusUpdated.emit(rsc.Strings.RENAMING_DONE)
