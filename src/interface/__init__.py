@@ -1,3 +1,4 @@
+from interface.FooterLabel import FooterLabel
 from interface.HeaderWidget import HeaderWidget
 from interface.MainWindow import MainWindow
 from interface.DirectoryChooserWidget import DirectoryChooserWidget

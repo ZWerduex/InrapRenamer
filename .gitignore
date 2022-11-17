@@ -2,3 +2,5 @@ inraprenamer.log
 build/
 dist/
 .vscode/
+*.spec
+__pycache__/

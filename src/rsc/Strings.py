@@ -1,7 +1,3 @@
-
-import logging
-LOGGER = logging.getLogger(__name__)
-
 import os
 import sys
 
@@ -25,7 +21,8 @@ class Strings():
     RENAMING_FILES = 'Renommage des fichiers'
     RENAMING_DONE = 'Renommage terminé !'
 
-    FOOTER = 'Luc Le Gaillard - Copyright 2022'
+    FOOTER_LINK = 'https://github.com/ZWerduex/InrapRenamer'
+    FOOTER_TEXT = f'Developed by Z-WX under AGPL-3.0 license, available on <a href=\"{FOOTER_LINK}\">GitHub</a>'
 
     class Words():
 
@@ -78,6 +75,7 @@ class Styles():
         font-size: 12px;
     """
     FOOTER = """
-        font-size: 9px;
+        font-size: 12px;
         color: grey;
+        text-decoration: none;
     """

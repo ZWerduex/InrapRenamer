@@ -58,8 +58,8 @@ class MainWindow(wid.QMainWindow):
         self._tracker.setSizePolicy(sp)
         self._tracker.hide()
 
-        footer = wid.QLabel(rsc.Strings.FOOTER)
-        footer.setStyleSheet(rsc.Styles.FOOTER)
+        # Credits with my name, clickable GitHub link and license name
+        footer = i.FooterLabel()
 
         vLay = wid.QVBoxLayout()
         vLay.addWidget(i.HeaderWidget())
