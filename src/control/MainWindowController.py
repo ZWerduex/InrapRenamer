@@ -95,7 +95,7 @@ class RenamerThread(core.QThread):
             numLength = max(int(math.log10(nbFiles)) + 1, 4)
 
             LOGGER.info('Sorting files by older file first ...')
-            # Sort by older file first
+            # Sort by older file first in date of creation
             files.sort(key = lambda f: os.path.getctime(os.path.join(self._dir, f)))
 
             self.updateStatusProcess(rsc.Strings.RENAMING_FILES)

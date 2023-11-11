@@ -4,8 +4,6 @@ LOGGER = logging.getLogger(__name__)
 
 import webbrowser
 
-from PyQt6.QtCore import Qt
-import PyQt6.QtGui as gui
 import PyQt6.QtWidgets as wid
 
 import rsc
